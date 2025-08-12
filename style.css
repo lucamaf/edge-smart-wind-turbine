@@ -1,0 +1,133 @@
+/* General body styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #87CEEB; /* Sky blue */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    color: #333;
+}
+
+/* Container for the turbine parts */
+.turbine-container {
+    position: relative;
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* The rotating part of the turbine */
+#turbine-blades {
+    width: 250px;
+    height: 250px;
+    /* The 'rotate' animation is defined below */
+    animation-name: rotate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; /* Ensures constant speed */
+    transform-origin: center;
+    z-index: 10;
+    /* Default animation state */
+    animation-play-state: running;
+}
+
+/* The static base of the turbine */
+#turbine-base {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    bottom: -50px;
+}
+
+/* The keyframes for the rotation animation */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Styling for the control panel */
+.control-panel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    z-index: 100;
+}
+
+.control-panel h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.control-panel label {
+    font-weight: bold;
+}
+
+.control-panel input[type="range"] {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.control-panel p {
+    margin: 10px 0 0;
+    text-align: center;
+}
+
+.control-panel small {
+    display: block;
+    margin-top: 15px;
+    color: #555;
+    background-color: #f0f0f0;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Styling for the new info panel */
+.info-panel {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    z-index: 100;
+    width: 200px;
+    text-align: center;
+}
+
+.info-panel h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.info-panel p {
+    margin: 5px 0;
+}
+
+.info-panel .data-readout {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #0056b3; /* A nice blue for the data */
+    margin-top: 10px;
+}
+
+.info-panel .data-readout strong {
+    font-weight: 900;
+}
