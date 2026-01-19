@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controllable Wind Turbine</title>
+    <!-- Link to the external stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <h2>Wind Control</h2>
+        <label for="speed-slider">Set Wind Speed (km/h):</label>
+        <input type="range" id="speed-slider" min="0" max="120" value="4" step="2">
+        <p>Current Wind Speed: <strong id="speed-display">4</strong> km/h</p>
+        <small>You can also run <code>setWindSpeed(x)</code> in the console.</small>
+    </div>
+
+    <!-- Live Data Panel -->
+    <div class="info-panel">
+        <h2>Live Data</h2>
+        <p>Generated Power:</p>
+        <p class="data-readout"><strong id="power-display">0</strong> kW</p>
+    </div>
+    
+    <!-- Container for the SVG turbine -->
+    <div class="turbine-container">
+        <!-- Turbine Base (Static) -->
+        <svg id="turbine-base" viewBox="0 0 88 277" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 8H38L30 277H58L50 8Z" fill="#E0E0E0"/>
+            <rect x="25" y="0" width="38" height="15" rx="4" fill="#BDBDBD"/>
+        </svg>
+
+        <!-- Turbine Blades (Animated) - NOW WITH 4 BLADES -->
+        <svg id="turbine-blades" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Define a single blade shape inside <defs> to be reused -->
+            <defs>
+                <path id="blade" d="M100,100 C110,95 160,90 195,90 L195,110 C160,110 110,105 100,100 Z" fill="white" stroke="#cccccc" stroke-width="0.5"/>
+            </defs>
+            
+            <!-- Create 4 blades by referencing the defined path and rotating it -->
+            <use href="#blade" />
+            <use href="#blade" transform="rotate(90 100 100)" />
+            <use href="#blade" transform="rotate(180 100 100)" />
+            <use href="#blade" transform="rotate(270 100 100)" />
+            
+            <!-- Center Hub -->
+            <circle cx="100" cy="100" r="15" fill="#BDBDBD"/>
+        </svg>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="turbine-controller.js"></script>
+
+</body>
+</html>
